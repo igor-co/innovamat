@@ -7,6 +7,7 @@ import { Api } from 'services/Api';
 
 export const DetailsView = () => {
   const [content, setContent] = useState([]);
+
   let { id } = useParams();
 
   useEffect(() => {

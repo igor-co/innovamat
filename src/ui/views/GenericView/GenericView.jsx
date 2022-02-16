@@ -11,6 +11,8 @@ export const GenericView = ({ type }) => {
 
   let navigate = useNavigate();
 
+  const { messages, paths } = config;
+
   useEffect(() => {
     onViewLoad();
   }, []);
@@ -23,16 +25,15 @@ export const GenericView = ({ type }) => {
       console.log('error', error);
     }
   };
-  console.log('content Page', content);
 
   const onSelect = (id) => {
-    navigate(`/${config.paths.RESOURCES}/${id}`);
+    navigate(`/${paths.RESOURCES}/${id}`);
   };
 
   return (
     <>
       <section>
-        <h2>{type}</h2>
+        <h2>{messages[type]}</h2>
 
         {content.map((section) => (
           <div key={section.sectionTitle}>

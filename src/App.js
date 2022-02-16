@@ -7,26 +7,27 @@ import { Home } from 'ui/views/Home';
 import { config } from 'conf';
 
 export const App = () => {
+  const { paths } = config;
   return (
     <Routes>
       <Route path='/' element={<Home />} />
       <Route
-        path={config.paths.TALLERES}
-        element={<GenericView type={config.paths.TALLERES} />}
+        path={paths.TALLERES}
+        element={<GenericView type={paths.TALLERES} />}
       />
       <Route
-        path={config.paths.RINCONES}
-        element={<GenericView type={config.paths.RINCONES} />}
+        path={paths.RINCONES}
+        element={<GenericView type={paths.RINCONES} />}
       />
       <Route
-        path={config.paths.AMBIENTES}
-        element={<GenericView type={config.paths.AMBIENTES} />}
+        path={paths.AMBIENTES}
+        element={<GenericView type={paths.AMBIENTES} />}
       />
       <Route
-        path={config.paths.RUTINAS}
-        element={<GenericView type={config.paths.RUTINAS} />}
+        path={paths.RUTINAS}
+        element={<GenericView type={paths.RUTINAS} />}
       />
-      <Route path={config.paths.RESOURCES} element={<DetailsView />}>
+      <Route path={paths.RESOURCES} element={<DetailsView />}>
         <Route path=':id' element={<DetailsView />} />
       </Route>
       <Route
