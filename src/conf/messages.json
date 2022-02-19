@@ -2,5 +2,11 @@
   "ambientes": "Ambientes",
   "rincones": "Rincones",
   "rutinas": "Rutinas",
-  "talleres": "Talleres"
+  "talleres": "Talleres",
+  "menuTitle": "DINÁMICAS",
+  "filterLabel": "FILTROS",
+  "favorite": "Favorito",
+  "error": "Oops... Hay un error",
+  "errorAdvice": "Por favor contacta con tu profesor.",
+  "noData": "No tengo datos para mostrarte..."
 }
