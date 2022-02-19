@@ -18,11 +18,11 @@
   --mid-dark-grey: #c5d6d5;
   --dark-grey: #99aba9;
   --darkest-grey: #a3b7b5;
-  --header-borders-dark-grey: #a3b7b5;
+  --header-borders-dark-grey: #e3e3e3;
 
   --main-font-color: var(--corporate-darkerest-color);
   --font-dark-corporate: var(--corporate-dark-color);
-  --font-light-grey: var(--mid-grey);
+  --font-light-grey: var(--mid-dark-grey);
   --font-mid-grey: var(--dark-grey);
   --font-dark-grey: var(--darkest-grey);
 
@@ -39,6 +39,7 @@
   //borders
   --border-radius: 8px;
   --card-border-radius: 5px;
+  --border-style: 1px solid;
   --border-light-color: var(--lightest-grey);
   --border-mid-color: var(--light-grey);
   --border-dark-color: var(--mid-dark-grey);
@@ -49,5 +50,7 @@
 
   //sizes
   --header-height-desktop: 4rem;
-  --nav-width-desktop: 15rem;
+  --nav-width-desktop: 16rem;
+  --layout-margin-desktop: 2rem;
+  --layout-margin-top-desktop: 1.2rem;
 }
