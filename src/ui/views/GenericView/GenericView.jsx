@@ -1,59 +1,97 @@
-import { useEffect, useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useEffect, useState, useCallback } from 'react';
 
 import styles from './GenericView.module.scss';
 
-import { Api } from 'services/Api';
 import { config } from 'conf';
+
+import { Card } from 'ui/views/GenericView/_components/Card';
+import { Layout } from 'ui/_components/Layout';
+import { SpinnerIcon } from 'assets/icons/SpinnerIcon';
+
+import { Api } from 'services/Api';
 
 export const GenericView = ({ type }) => {
   const [content, setContent] = useState([]);
+  const [error, setError] = useState({ status: null, message: null });
+  const [loadingStatus, setLoadingStatus] = useState('idle');
 
-  let navigate = useNavigate();
+  const { messages } = config;
 
-  const { messages, paths } = config;
-
-  useEffect(() => {
-    onViewLoad();
-  }, []);
-
-  const onViewLoad = async () => {
+  const onViewLoad = useCallback(async () => {
+    setLoadingStatus('pending');
     try {
       const { data } = await Api.getContentByPageType(type);
       setContent(data);
+      setLoadingStatus('success');
     } catch (error) {
-      console.log('error', error);
+      setError({
+        status: error.response.status,
+        message: error.response.data.message,
+      });
+      setLoadingStatus('error');
+      setContent([]);
     }
-  };
+  }, [type]);
 
-  const onSelect = (id) => {
-    navigate(`/${paths.RESOURCES}/${id}`);
+  useEffect(() => {
+    onViewLoad();
+  }, [type, onViewLoad]);
+
+  const renderContent = () => {
+    if (loadingStatus === 'pending') {
+      return (
+        <div className={styles.loaderWrapper}>
+          <SpinnerIcon />
+        </div>
+      );
+    }
+
+    if (loadingStatus === 'error') {
+      return (
+        <div className={styles.noContent}>
+          <h2 className={styles.error}>
+            {messages['error']} : {error.status}
+          </h2>
+
+          {/** Should display the error message provided from server,
+           may use error boundary with logger to track the errors 
+           
+            <h4>Server message:{error.message}</h4>
+           
+           */}
+
+          <p>{messages['errorAdvice']}</p>
+        </div>
+      );
+    }
+
+    if (loadingStatus === 'success' && content.length === 0) {
+      return (
+        <div className={styles.noContent}>
+          <h2>{messages['noData']}</h2>
+          <p>{messages['errorAdvice']}</p>
+        </div>
+      );
+    }
+
+    return content.map((section) => (
+      <section key={section.sectionTitle}>
+        <h3 className={styles.sectionTitle}>{section.sectionName}</h3>
+        <div className={styles.section}>
+          {section.resources.map((resource) => (
+            <Card key={resource.id} {...resource} />
+          ))}
+        </div>
+      </section>
+    ));
   };
 
   return (
-    <>
-      <section>
-        <h2>{messages[type]}</h2>
-
-        {content.map((section) => (
-          <div key={section.sectionTitle}>
-            <h3>{section.sectionName}</h3>
-            {section.resources.map((resource) => (
-              <div
-                onClick={() => onSelect(resource.id)}
-                key={`${section.sectionName}_${section.image}_${resource.id}`}
-              >
-                <p>{resource.title}</p>
-                <img src={resource.image} alt='' srcSet='' />
-              </div>
-            ))}
-          </div>
-        ))}
-      </section>
-
-      <nav>
-        <NavLink to='/'>Inicio</NavLink>
-      </nav>
-    </>
+    <Layout>
+      <main>
+        <h2 className={styles.viewTitle}>{messages[type]}</h2>
+        {renderContent()}
+      </main>
+    </Layout>
   );
 };
