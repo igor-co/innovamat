@@ -1,0 +1,17 @@
+.layoutWrapper {
+  display: flex;
+  justify-content: center;
+
+  .content {
+    @media (min-width: 768px) {
+      width: 100%;
+      padding-top: calc(
+        var(--header-height-desktop) + var(--layout-margin-top-desktop)
+      );
+      padding-left: calc(
+        var(--nav-width-desktop) + var(--layout-margin-desktop)
+      );
+      padding-right: var(--layout-margin-desktop);
+    }
+  }
+}
