@@ -1,0 +1,17 @@
+.loaderWrapper {
+  display: flex;
+  height: 80vh;
+  width: 100%;
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.noContent {
+  flex-direction: column;
+  margin-top: 3rem;
+  margin-left: 0.75rem;
+  .error {
+    color: var(--error-color);
+  }
+}
