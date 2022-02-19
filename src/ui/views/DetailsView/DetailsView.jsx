@@ -6,6 +6,7 @@ import styles from './DetailsView.module.scss';
 import { config } from 'conf';
 
 import { Layout } from 'ui/_components/Layout';
+import { PdfViewer } from 'ui/_components/PdfViewer';
 import { SpinnerIcon } from 'assets/icons/SpinnerIcon';
 
 import { Api } from 'services/Api';
@@ -39,6 +40,20 @@ export const DetailsView = () => {
     onViewLoad();
   }, [id, onViewLoad]);
 
+  const renderFileByType = () => {
+    switch (content.type) {
+      case 'pdf':
+        return <PdfViewer url={content.file} />;
+      // Here we can add more file cases for different types
+      default:
+        return (
+          <a href={content.file} className={styles.downloadLink}>
+            {messages['downloadFile']}
+          </a>
+        );
+    }
+  };
+
   const renderContent = () => {
     if (loadingStatus === 'pending') {
       return (
@@ -69,7 +84,12 @@ export const DetailsView = () => {
       );
     }
 
-    return <div dangerouslySetInnerHTML={{ __html: content.description }} />;
+    return (
+      <>
+        <div dangerouslySetInnerHTML={{ __html: content.description }} />
+        <div className={styles.fileWrapper}>{renderFileByType()}</div>
+      </>
+    );
   };
 
   return (
