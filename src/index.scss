@@ -1,24 +1,13 @@
-@font-face {
-  font-family: 'Roboto';
-  src: local('Roboto'),
-    url(./assets/fonts/Roboto-Regular.ttf) format('truetype');
-}
+@import '_styles/fonts';
+@import '_styles/cssVariables';
 
-@font-face {
-  font-family: 'Roboto';
-  font-weight: 900;
-  src: local('Roboto'), url(./assets/fonts/Roboto-Bold.ttf) format('truetype');
-}
-
-@font-face {
-  font-family: 'Roboto';
-  font-weight: 900;
-  src: local('Roboto'), url(./assets/fonts/Roboto-Black.ttf) format('truetype');
+@-ms-viewport {
+  width: device-width;
 }
 
 * {
   margin: 0;
-
+  padding: 0;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -27,4 +16,5 @@
     'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: var(--main-font-color);
 }
