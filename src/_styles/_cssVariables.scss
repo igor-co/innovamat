@@ -18,11 +18,12 @@
   --mid-dark-grey: #c5d6d5;
   --dark-grey: #99aba9;
   --darkest-grey: #a3b7b5;
+  --header-borders-dark-grey: #a3b7b5;
 
   --main-font-color: var(--corporate-darkerest-color);
   --font-dark-corporate: var(--corporate-dark-color);
   --font-light-grey: var(--mid-grey);
-  --font-mid-grey: var(--mid-dark-grey);
+  --font-mid-grey: var(--dark-grey);
   --font-dark-grey: var(--darkest-grey);
 
   --button-primary-font-color: var(--white);
@@ -37,15 +38,16 @@
 
   //borders
   --border-radius: 8px;
+  --card-border-radius: 5px;
   --border-light-color: var(--lightest-grey);
   --border-mid-color: var(--light-grey);
-  --border-dark-color: var(--corporate-dark-color);
+  --border-dark-color: var(--mid-dark-grey);
 
   //shadows
   --primary-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
-  --secondary-shadow: 0px 7px 15px rgba(0, 0, 0, 0.15);
+  --main-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
 
   //sizes
   --header-height-desktop: 4rem;
-  --nav-width-desktop: 12rem;
+  --nav-width-desktop: 15rem;
 }
