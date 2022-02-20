@@ -1,6 +1,6 @@
 import styles from '../Icons.module.scss';
 
-export const ChevronIcon = ({ isActive }) => {
+export const ChevronIcon = ({ isActive = false }) => {
   return (
     <svg
       svg
@@ -12,8 +12,8 @@ export const ChevronIcon = ({ isActive }) => {
     >
       <path
         d='M21.3438 4.8125L11.9637 14.1925C11.8408 14.3156 11.674 14.3848 11.5 14.3848C11.326 14.3848 11.1592 14.3156 11.0362 14.1925L1.65625 4.8125'
-        stroke-width='1.5'
-        stroke-linecap='round'
+        strokeWidth='1.5'
+        strokeLinecap='round'
         strokeLinejoin='round'
       />
     </svg>
