@@ -73,7 +73,6 @@ export const DetailsView = () => {
           <h2 className={styles.error}>
             {messages['error']} : {error.status}
           </h2>
-
           <p>{messages['errorAdvice']}</p>
         </div>
       );

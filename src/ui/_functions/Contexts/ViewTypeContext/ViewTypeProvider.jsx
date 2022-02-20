@@ -7,8 +7,8 @@ import { ViewTypeContext } from './ViewTypeContext';
 export const ViewTypeProvider = (props) => {
   const { paths } = config;
 
-  const [activeItem, setActiveItem] = useState(paths.TALLERES);
-  const values = { activeItem, setActiveItem };
+  const [currentViewType, setCurrentViewType] = useState(paths.TALLERES);
+  const values = { currentViewType, setCurrentViewType };
 
   return <ViewTypeContext.Provider value={values} {...props} />;
 };

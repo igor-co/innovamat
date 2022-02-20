@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+
 import { NavLink } from 'react-router-dom';
 
 import styles from './MenuItem.module.scss';
@@ -9,8 +11,15 @@ import { RinconesIcon } from 'assets/icons/RinconesIcon';
 import { RutinasIcon } from 'assets/icons/RutinasIcon';
 import { TalleresIcon } from 'assets/icons/TalleresIcon';
 
-export const MenuItem = ({ isActive, label, path }) => {
+import { ViewTypeContext } from 'ui/_functions/Contexts/ViewTypeContext/ViewTypeContext';
+
+export const MenuItem = ({ label, path }) => {
+  const { currentViewType, setCurrentViewType } = useContext(ViewTypeContext);
+
   const { paths } = config;
+
+  const isActive = currentViewType === path;
+
   const renderIcon = () => {
     switch (path) {
       case paths.AMBIENTES:
@@ -26,7 +35,11 @@ export const MenuItem = ({ isActive, label, path }) => {
   };
 
   return (
-    <NavLink to={`/${path}`} className={styles.menuItem}>
+    <NavLink
+      to={`/${path}`}
+      className={styles.menuItem}
+      onClick={() => setCurrentViewType(path)}
+    >
       {renderIcon()}
       <span className={isActive ? styles.labelSelected : styles.labelInactive}>
         {label}
