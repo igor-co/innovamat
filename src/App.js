@@ -4,6 +4,7 @@ import { config } from 'conf';
 
 import { GenericView } from 'ui/views/GenericView';
 import { DetailsView } from 'ui/views/DetailsView';
+import { NotFoundView } from 'ui/views/NotFoundView';
 
 import { ViewTypeProvider } from 'ui/_functions/Contexts/ViewTypeContext/ViewTypeProvider';
 
@@ -27,14 +28,7 @@ export const App = () => {
         <Route path={paths.RUTINAS} element={<GenericView />} />
         <Route path={paths.SEARCH} element={<GenericView />} />
         <Route path={`${paths.RESOURCES}/:id`} element={<DetailsView />} />
-        <Route
-          path='*'
-          element={
-            <main style={{ padding: '1rem' }}>
-              <p>There's nothing here!</p>
-            </main>
-          }
-        />
+        <Route path='*' element={<NotFoundView />} />
       </Routes>
     </ViewTypeProvider>
   );
