@@ -13,10 +13,10 @@ import { TalleresIcon } from 'assets/icons/TalleresIcon';
 
 import { ViewTypeContext } from 'ui/_functions/Contexts/ViewTypeContext/ViewTypeContext';
 
-export const MenuItem = ({ label, path }) => {
+export const MenuItem = ({ path }) => {
   const { currentViewType, setCurrentViewType } = useContext(ViewTypeContext);
 
-  const { paths } = config;
+  const { paths, messages } = config;
 
   const isActive = currentViewType === path;
 
@@ -42,7 +42,7 @@ export const MenuItem = ({ label, path }) => {
     >
       {renderIcon()}
       <span className={isActive ? styles.labelSelected : styles.labelInactive}>
-        {label}
+        {messages[path]}
       </span>
     </NavLink>
   );
