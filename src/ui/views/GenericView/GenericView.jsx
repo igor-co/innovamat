@@ -8,7 +8,7 @@ import { Card } from 'ui/views/GenericView/_components/Card';
 import { Layout } from 'ui/_components/Layout';
 import { SpinnerIcon } from 'assets/icons/SpinnerIcon';
 
-import { useLocalStorage } from 'ui/_components/_utils/Hooks/useLocalStorage';
+import { useLocalStorage } from 'ui/_functions/Hooks/useLocalStorage';
 
 import { Api } from 'services/Api';
 
