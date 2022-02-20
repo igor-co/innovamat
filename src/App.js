@@ -26,9 +26,7 @@ export const App = () => {
         <Route path={paths.AMBIENTES} element={<GenericView />} />
         <Route path={paths.RUTINAS} element={<GenericView />} />
         <Route path={paths.SEARCH} element={<GenericView />} />
-        <Route path={paths.RESOURCES} element={<DetailsView />}>
-          <Route path=':id' element={<DetailsView />} />
-        </Route>
+        <Route path={`${paths.RESOURCES}/:id`} element={<DetailsView />} />
         <Route
           path='*'
           element={
