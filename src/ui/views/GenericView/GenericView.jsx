@@ -13,27 +13,31 @@ import { useLocalStorage } from 'ui/_functions/Hooks/useLocalStorage';
 import { Api } from 'services/Api';
 
 export const GenericView = ({ type }) => {
-  const [content, setContent] = useState([]);
-  const [error, setError] = useState({ status: null, message: null });
-  const [loadingStatus, setLoadingStatus] = useState('idle');
+  const [{ status, error, content }, setState] = useState({
+    status: 'idle',
+    error: null,
+    content: [],
+  });
 
   const [favoritesIds, setFavoritesIds] = useLocalStorage('innovamat_fav', []);
 
   const { messages } = config;
 
   const onViewLoad = useCallback(async () => {
-    setLoadingStatus('pending');
+    setState((prev) => ({ ...prev, status: 'pending' }));
     try {
       const { data } = await Api.getContentByPageType(type);
-      setContent(data);
-      setLoadingStatus('success');
+
+      setState((prev) => ({ ...prev, status: 'resolved', content: data }));
     } catch (error) {
-      setError({
-        status: error.response.status,
-        message: error.response.data.message,
-      });
-      setLoadingStatus('error');
-      setContent([]);
+      setState((prev) => ({
+        ...prev,
+        status: 'rejected',
+        error: {
+          status: error.response.status,
+          message: error.response.data.message,
+        },
+      }));
     }
   }, [type]);
 
@@ -50,7 +54,7 @@ export const GenericView = ({ type }) => {
   };
 
   const renderContent = () => {
-    if (loadingStatus === 'pending') {
+    if (status === 'pending') {
       return (
         <div className={styles.loaderWrapper}>
           <SpinnerIcon />
@@ -58,7 +62,7 @@ export const GenericView = ({ type }) => {
       );
     }
 
-    if (loadingStatus === 'error') {
+    if (status === 'rejected') {
       return (
         <div className={styles.noContent}>
           <h2 className={styles.error}>
@@ -77,7 +81,7 @@ export const GenericView = ({ type }) => {
       );
     }
 
-    if (loadingStatus === 'success' && content.length === 0) {
+    if (status === 'resolved' && content.length === 0) {
       return (
         <div className={styles.noContent}>
           <h2>{messages['noData']}</h2>

@@ -12,27 +12,31 @@ import { SpinnerIcon } from 'assets/icons/SpinnerIcon';
 import { Api } from 'services/Api';
 
 export const DetailsView = () => {
-  const [content, setContent] = useState([]);
-  const [error, setError] = useState({ status: null, message: null });
-  const [loadingStatus, setLoadingStatus] = useState('idle');
+  const [{ status, error, content }, setState] = useState({
+    status: 'idle',
+    error: null,
+    content: [],
+  });
 
   const { id } = useParams();
 
   const { messages } = config;
 
   const onViewLoad = useCallback(async () => {
-    setLoadingStatus('pending');
+    setState((prev) => ({ ...prev, status: 'pending' }));
     try {
       const { data } = await Api.getResourcesById(id);
-      setContent(data);
-      setLoadingStatus('success');
+
+      setState((prev) => ({ ...prev, status: 'resolved', content: data }));
     } catch (error) {
-      setError({
-        status: error.response.status,
-        message: error.response.data.message,
-      });
-      setLoadingStatus('error');
-      setContent([]);
+      setState((prev) => ({
+        ...prev,
+        status: 'rejected',
+        error: {
+          status: error.response.status,
+          message: error.response.data.message,
+        },
+      }));
     }
   }, [id]);
 
@@ -43,7 +47,7 @@ export const DetailsView = () => {
   const renderFileByType = () => {
     switch (content.type) {
       case 'pdf':
-        return <PdfViewer url={content.file} />;
+        return <PdfViewer url={content.file} activateControlls={true} />; //pass false to disable controlls, controll are useful for smaller screens
       // Here we can add more file cases for different types
       default:
         return (
@@ -55,7 +59,7 @@ export const DetailsView = () => {
   };
 
   const renderContent = () => {
-    if (loadingStatus === 'pending') {
+    if (status === 'pending') {
       return (
         <div className={styles.loaderWrapper}>
           <SpinnerIcon />
@@ -63,7 +67,7 @@ export const DetailsView = () => {
       );
     }
 
-    if (loadingStatus === 'error') {
+    if (status === 'rejected') {
       return (
         <div className={styles.noContent}>
           <h2 className={styles.error}>
@@ -75,7 +79,7 @@ export const DetailsView = () => {
       );
     }
 
-    if (loadingStatus === 'success' && content.length === 0) {
+    if (status === 'resolved' && content.length === 0) {
       return (
         <div className={styles.noContent}>
           <h2>{messages['noData']}</h2>
