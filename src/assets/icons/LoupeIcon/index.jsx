@@ -1,0 +1,1 @@
+export { LoupeIcon } from './LoupeIcon';
