@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 
 import styles from './GenericView.module.scss';
 
@@ -9,10 +9,13 @@ import { Layout } from 'ui/_components/Layout';
 import { SpinnerIcon } from 'assets/icons/SpinnerIcon';
 
 import { useLocalStorage } from 'ui/_functions/Hooks/useLocalStorage';
+import { ViewTypeContext } from 'ui/_functions/Contexts/ViewTypeContext/ViewTypeContext';
 
 import { Api } from 'services/Api';
 
-export const GenericView = ({ type }) => {
+export const GenericView = () => {
+  const { currentViewType } = useContext(ViewTypeContext);
+
   const [{ status, error, content }, setState] = useState({
     status: 'idle',
     error: null,
@@ -26,7 +29,7 @@ export const GenericView = ({ type }) => {
   const onViewLoad = useCallback(async () => {
     setState((prev) => ({ ...prev, status: 'pending' }));
     try {
-      const { data } = await Api.getContentByPageType(type);
+      const { data } = await Api.getContentByPageType(currentViewType);
 
       setState((prev) => ({ ...prev, status: 'resolved', content: data }));
     } catch (error) {
@@ -39,11 +42,11 @@ export const GenericView = ({ type }) => {
         },
       }));
     }
-  }, [type]);
+  }, [currentViewType]);
 
   useEffect(() => {
     onViewLoad();
-  }, [type, onViewLoad]);
+  }, [currentViewType, onViewLoad]);
 
   const onFavoriteClick = (isFavorite, id) => {
     if (isFavorite) {
@@ -110,7 +113,7 @@ export const GenericView = ({ type }) => {
   return (
     <Layout>
       <main>
-        <h2 className={styles.viewTitle}>{messages[type]}</h2>
+        <h2 className={styles.viewTitle}>{messages[currentViewType]}</h2>
         {renderContent()}
       </main>
     </Layout>
