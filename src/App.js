@@ -4,37 +4,28 @@ import { config } from 'conf';
 
 import { GenericView } from 'ui/views/GenericView';
 import { DetailsView } from 'ui/views/DetailsView';
-import { Home } from 'ui/views/Home';
 
 import { ViewTypeProvider } from 'ui/_functions/Contexts/ViewTypeContext/ViewTypeProvider';
 
 export const App = () => {
   const { paths } = config;
+  /**TODO
+    Make Talleres first page + implement 
+   Fix header in mobile
+   Search + results
+   Filters menu panel + filtering
+   *
+   */
 
   return (
     <ViewTypeProvider>
       <Routes>
-        <Route path='/' element={<GenericView type={paths.TALLERES} />} />
-        <Route
-          path={paths.TALLERES}
-          element={<GenericView type={paths.TALLERES} />}
-        />
-        <Route
-          path={paths.RINCONES}
-          element={<GenericView type={paths.RINCONES} />}
-        />
-        <Route
-          path={paths.AMBIENTES}
-          element={<GenericView type={paths.AMBIENTES} />}
-        />
-        <Route
-          path={paths.RUTINAS}
-          element={<GenericView type={paths.RUTINAS} />}
-        />
-        <Route
-          path={paths.SEARCH}
-          element={<GenericView type={paths.SEARCH} />}
-        />
+        <Route path='/' element={<GenericView />} />
+        <Route path={paths.TALLERES} element={<GenericView />} />
+        <Route path={paths.RINCONES} element={<GenericView />} />
+        <Route path={paths.AMBIENTES} element={<GenericView />} />
+        <Route path={paths.RUTINAS} element={<GenericView />} />
+        <Route path={paths.SEARCH} element={<GenericView />} />
         <Route path={paths.RESOURCES} element={<DetailsView />}>
           <Route path=':id' element={<DetailsView />} />
         </Route>

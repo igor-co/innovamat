@@ -47,8 +47,10 @@ export const DetailsView = () => {
   const renderFileByType = () => {
     switch (content.type) {
       case 'pdf':
-        return <PdfViewer url={content.file} activateControlls={true} />; //pass false to disable controlls, controll are useful for smaller screens
-      // Here we can add more file cases for different types
+        // activateControlls pass false to disable controlls, controll are useful for smaller screens
+        return <PdfViewer url={content.file} activateControlls />;
+
+      //case:'any_type' return <ViewerByType/> Here we can add more file cases for different types
       default:
         return (
           <a href={content.file} className={styles.downloadLink}>
