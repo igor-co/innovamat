@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { cloneElement, useContext } from 'react';
 
 import { NavLink } from 'react-router-dom';
 
@@ -6,33 +6,14 @@ import styles from './MenuItem.module.scss';
 
 import { config } from 'conf';
 
-import { AmbientesIcon } from 'assets/icons/AmbientesIcon';
-import { RinconesIcon } from 'assets/icons/RinconesIcon';
-import { RutinasIcon } from 'assets/icons/RutinasIcon';
-import { TalleresIcon } from 'assets/icons/TalleresIcon';
+import { GlobalContext } from 'ui/_functions/Contexts/GlobalContext/GlobalContext';
 
-import { ViewTypeContext } from 'ui/_functions/Contexts/ViewTypeContext/ViewTypeContext';
+export const MenuItem = ({ path, children }) => {
+  const { currentViewType, setCurrentViewType } = useContext(GlobalContext);
 
-export const MenuItem = ({ path }) => {
-  const { currentViewType, setCurrentViewType } = useContext(ViewTypeContext);
-
-  const { paths, messages } = config;
+  const { messages } = config;
 
   const isActive = currentViewType === path;
-
-  const renderIcon = () => {
-    switch (path) {
-      case paths.AMBIENTES:
-        return <AmbientesIcon isActive={isActive} />;
-      case paths.RINCONES:
-        return <RinconesIcon isActive={isActive} />;
-      case paths.RUTINAS:
-        return <RutinasIcon isActive={isActive} />;
-      case paths.TALLERES:
-        return <TalleresIcon isActive={isActive} />;
-      default:
-    }
-  };
 
   return (
     <NavLink
@@ -40,7 +21,7 @@ export const MenuItem = ({ path }) => {
       className={styles.menuItem}
       onClick={() => setCurrentViewType(path)}
     >
-      {renderIcon()}
+      {cloneElement(children, { isActive })}
       <span className={isActive ? styles.labelSelected : styles.labelInactive}>
         {messages[path]}
       </span>
