@@ -10,6 +10,8 @@
   "errorAdvice": "Por favor contacta con tu profesor.",
   "noData": "No tengo datos para mostrarte...",
   "search": "Buscar",
+  "searchResult": "Resultados de busqueda",
+  "noSearchResult": "No hay ningun resultado",
   "searchPlaceholder": "Introduce un texto",
   "downloadFile": "Descarga el fichero",
   "pageNotExist": "No hay nada por aqui..."
