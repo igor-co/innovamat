@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
 
+  transition: all 0.1s ease-in-out;
   width: calc(var(--nav-width-desktop) - var(--layout-margin-desktop));
   padding: 6px 0;
   border: var(--border-style) var(--header-borders-dark-grey);
@@ -24,14 +25,25 @@
     padding: 0 0.5em;
   }
 
+  svg:first-of-type {
+    transition: all 0.1s ease-in-out;
+    transform: rotate(0deg);
+  }
+
   &:hover {
     .label {
       color: var(--button-primary-hover-color);
+    }
+    path {
+      stroke: var(--button-primary-hover-color);
     }
   }
   &:active {
     .label {
       color: var(--button-primary-active-color);
+    }
+    path {
+      stroke: var(--button-primary-active-color);
     }
   }
 }
@@ -39,5 +51,19 @@
 .isPanelOpened {
   .label {
     color: var(--button-primary-color);
+  }
+}
+
+.isOpened {
+  border-bottom-left-radius: 0px !important;
+  .label {
+    color: var(--button-primary-color);
+  }
+  path {
+    stroke: var(--corporate-color);
+  }
+  svg:first-of-type {
+    transition: all 0.1s ease-in-out;
+    transform: rotate(-180deg);
   }
 }
