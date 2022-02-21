@@ -1,14 +1,6 @@
-import styles from '../Icons.module.scss';
-
-export const LoupeIcon = ({ isActive = false }) => {
+export const LoupeIcon = () => {
   return (
-    <svg
-      width='25'
-      height='25'
-      viewBox='0 0 25 25'
-      fill='none'
-      // className={isActive ? styles.navIconActive : styles.navIconDisabled}
-    >
+    <svg width='25' height='25' viewBox='0 0 25 25' fill='none'>
       <path
         fillRule='evenodd'
         clipRule='evenodd'
