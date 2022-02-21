@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import styles from './Header.module.scss';
 
 import { FiltersButton } from './_components/FiltersButton';
@@ -7,8 +5,6 @@ import { SearchButton } from './_components/SearchButton';
 import { SearchInput } from './_components/SearchInput';
 
 export const Header = ({ isScrolledDown }) => {
-  const [search, setSearch] = useState('');
-
   return (
     <header
       className={`${styles.headerWrapper} ${
@@ -17,7 +13,7 @@ export const Header = ({ isScrolledDown }) => {
     >
       <div className={styles.searchBar}>
         <FiltersButton />
-        <SearchInput onChange={setSearch} />
+        <SearchInput />
         <SearchButton />
       </div>
     </header>

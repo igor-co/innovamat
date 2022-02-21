@@ -2,11 +2,12 @@ import { Routes, Route } from 'react-router-dom';
 
 import { config } from 'conf';
 
-import { GenericView } from 'ui/views/GenericView';
 import { DetailsView } from 'ui/views/DetailsView';
+import { GenericView } from 'ui/views/GenericView';
 import { NotFoundView } from 'ui/views/NotFoundView';
+import { SearchView } from 'ui/views/SearchView';
 
-import { ViewTypeProvider } from 'ui/_functions/Contexts/ViewTypeContext/ViewTypeProvider';
+import { GlobalContextProvider } from 'ui/_functions/Contexts/GlobalContext/GlobalContextProvider';
 
 export const App = () => {
   const { paths } = config;
@@ -19,17 +20,17 @@ export const App = () => {
    */
 
   return (
-    <ViewTypeProvider>
+    <GlobalContextProvider>
       <Routes>
         <Route path='/' element={<GenericView />} />
         <Route path={paths.TALLERES} element={<GenericView />} />
         <Route path={paths.RINCONES} element={<GenericView />} />
         <Route path={paths.AMBIENTES} element={<GenericView />} />
         <Route path={paths.RUTINAS} element={<GenericView />} />
-        <Route path={paths.SEARCH} element={<GenericView />} />
+        <Route path={paths.SEARCH} element={<SearchView />} />
         <Route path={`${paths.RESOURCES}/:id`} element={<DetailsView />} />
         <Route path='*' element={<NotFoundView />} />
       </Routes>
-    </ViewTypeProvider>
+    </GlobalContextProvider>
   );
 };

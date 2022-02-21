@@ -1,17 +1,23 @@
-import styles from './SearchButton.module.scss';
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+import styles from './SearchButton.module.scss';
 
 import { config } from 'conf';
 
 import { LoupeIcon } from 'assets/icons/LoupeIcon';
 
-export const SearchButton = ({ onClick = () => {} }) => {
+import { GlobalContext } from 'ui/_functions/Contexts/GlobalContext/GlobalContext';
+
+export const SearchButton = () => {
+  const { setIsSearching } = useContext(GlobalContext);
+
   const { messages, paths } = config;
 
   const navigate = useNavigate();
 
   const onSearch = () => {
-    onClick();
+    setIsSearching((prevState) => !prevState);
     navigate(`/${paths.SEARCH}`);
   };
 
