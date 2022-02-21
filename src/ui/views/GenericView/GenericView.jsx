@@ -9,12 +9,12 @@ import { Layout } from 'ui/_components/Layout';
 import { SpinnerIcon } from 'assets/icons/SpinnerIcon';
 
 import { useLocalStorage } from 'ui/_functions/Hooks/useLocalStorage';
-import { ViewTypeContext } from 'ui/_functions/Contexts/ViewTypeContext/ViewTypeContext';
+import { GlobalContext } from 'ui/_functions/Contexts/GlobalContext/GlobalContext';
 
 import { Api } from 'services/Api';
 
 export const GenericView = () => {
-  const { currentViewType } = useContext(ViewTypeContext);
+  const { currentViewType } = useContext(GlobalContext);
 
   const [{ status, error, content }, setState] = useState({
     status: 'idle',
