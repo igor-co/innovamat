@@ -4,7 +4,7 @@ import styles from './GenericView.module.scss';
 
 import { config } from 'conf';
 
-import { Card } from 'ui/views/GenericView/_components/Card';
+import { Card } from 'ui/_components/Card';
 import { Layout } from 'ui/_components/Layout';
 import { SpinnerIcon } from 'assets/icons/SpinnerIcon';
 
