@@ -31,14 +31,16 @@
   --button-primary-hover-color: var(--corporate-mid-color);
   --button-primary-active-color: var(--corporate-mid-dark-color);
 
-  --button-secondary-font-color: var(--main-font-color);
-  --button-secondary-color: var(--font-light-grey);
-  --button-secondary-hover-color: #c3d7d6;
-  --button-secondary-active-color: #a4bbbb;
+  --button-secondary-disabled-font-color: var(--dark-grey);
+  --button-secondary-color: var(--mid-grey);
+  --button-secondary-hover-color: var(--mid-dark-grey);
+  --button-secondary-active-color: var(--dark-grey);
+  --button-secondary-disabled-color: var(--lightest-grey);
 
   //borders
   --border-radius: 8px;
   --card-border-radius: 5px;
+  --button-border-radius: 5px;
   --border-style: 1px solid;
   --border-light-color: var(--lightest-grey);
   --border-mid-color: var(--light-grey);
