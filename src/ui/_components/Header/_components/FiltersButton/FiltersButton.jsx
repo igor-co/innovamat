@@ -8,12 +8,12 @@ import { ChevronIcon } from 'assets/icons/ChevronIcon';
 import { FiltersIcon } from 'assets/icons/FiltersIcon';
 import { FiltersPanel } from 'ui/_components/Header/_components/FiltersPanel';
 
-export const FiltersButton = () => {
+export const FiltersButton = ({ classNames }) => {
   const [isOpened, setIsOpened] = useState(false);
   const { messages } = config;
 
   return (
-    <div>
+    <div className={classNames}>
       <button
         className={`${styles.button} ${isOpened ? styles.isOpened : ''}`}
         onClick={() => setIsOpened((prev) => !prev)}

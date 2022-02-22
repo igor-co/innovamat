@@ -6,7 +6,7 @@ import { config } from 'conf';
 
 import { GlobalContext } from 'ui/_functions/Contexts/GlobalContext/GlobalContext';
 
-export const SearchInput = () => {
+export const SearchInput = ({ classNames }) => {
   const { setSearchingPhrase } = useContext(GlobalContext);
 
   const { messages } = config;
@@ -14,7 +14,7 @@ export const SearchInput = () => {
   return (
     <input
       onChange={(event) => setSearchingPhrase(event.target.value)}
-      className={styles.input}
+      className={`${styles.input} ${classNames}`}
       placeholder={messages['searchPlaceholder']}
     />
   );

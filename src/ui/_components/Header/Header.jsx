@@ -12,9 +12,9 @@ export const Header = ({ isScrolledDown }) => {
       }`}
     >
       <div className={styles.searchBar}>
-        <FiltersButton />
-        <SearchInput />
-        <SearchButton />
+        <FiltersButton classNames={styles.filter} />
+        <SearchInput classNames={styles.searchInput} />
+        <SearchButton classNames={styles.searchButton} />
       </div>
     </header>
   );

@@ -8,7 +8,11 @@
   border-bottom-right-radius: var(--border-radius);
   box-shadow: var(--main-shadow);
   width: calc(var(--nav-width-desktop) - var(--layout-margin-desktop));
-  margin-left: var(--layout-margin-desktop);
+  right: calc(100vw / 2 - var(--nav-width-desktop) / 2);
+  @media (min-width: 978px) {
+    margin-left: var(--layout-margin-desktop);
+    right: auto;
+  }
 
   .content {
     padding: 1.2rem 0.8rem 0px 0.8rem;

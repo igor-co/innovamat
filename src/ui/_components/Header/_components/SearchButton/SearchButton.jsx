@@ -9,7 +9,7 @@ import { LoupeIcon } from 'assets/icons/LoupeIcon';
 
 import { GlobalContext } from 'ui/_functions/Contexts/GlobalContext/GlobalContext';
 
-export const SearchButton = () => {
+export const SearchButton = ({ classNames }) => {
   const { setIsSearching } = useContext(GlobalContext);
 
   const { messages, paths } = config;
@@ -22,7 +22,11 @@ export const SearchButton = () => {
   };
 
   return (
-    <button className={styles.button} onClick={onSearch}>
+    <button
+      className={classNames}
+      className={`${styles.button} ${classNames}`}
+      onClick={onSearch}
+    >
       <LoupeIcon />
       <span className={styles.label}>{messages['search']}</span>
     </button>
