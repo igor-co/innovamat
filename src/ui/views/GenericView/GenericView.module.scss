@@ -1,3 +1,5 @@
+@import '_styles/mixins';
+
 .viewTitle {
   margin: 0 0.75rem;
   padding-top: 0.7rem;
@@ -28,23 +30,5 @@
 }
 
 .section {
-  display: grid;
-  grid-template-columns: 1fr;
-
-  @media (min-width: 420px) {
-    grid-gap: 1.2rem;
-    grid-template-columns: repeat(2, 1fr);
-  }
-  @media (min-width: 1000px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  @media (min-width: 1300px) {
-    grid-template-columns: repeat(4, 1fr);
-  }
-  @media (min-width: 1450px) {
-    grid-template-columns: repeat(5, 1fr);
-  }
-  @media (min-width: 1600px) {
-    grid-gap: 1.4rem;
-  }
+  @include responsive-cards-grid;
 }

@@ -1,3 +1,5 @@
+@import '_styles/mixins';
+
 .layoutWrapper {
   display: flex;
   justify-content: center;
@@ -10,7 +12,7 @@
     padding-bottom: var(--header-height-desktop);
     padding-right: var(--layout-margin-mobile);
 
-    @media (min-width: 768px) {
+    @include navigation-desktop {
       width: 100%;
       padding-top: calc(
         var(--header-height-desktop) + var(--layout-margin-top-desktop)

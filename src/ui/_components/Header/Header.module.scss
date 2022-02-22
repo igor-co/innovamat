@@ -1,3 +1,5 @@
+@import '_styles/mixins';
+
 .headerWrapper {
   z-index: 2;
   position: fixed;
@@ -9,7 +11,7 @@
   height: var(--header-height-mobile);
   background-color: var(--panel-color);
 
-  @media (min-width: 978px) {
+  @include header-desktop {
     height: var(--header-height-desktop);
     background-color: var(--bg-color);
   }
@@ -36,7 +38,7 @@
     order: 2;
   }
 
-  @media (min-width: 978px) {
+  @include header-desktop {
     justify-content: flex-start;
     height: var(--header-height-desktop);
     background-color: var(--bg-color);

@@ -1,3 +1,5 @@
+@import '_styles/mixins';
+
 .button {
   cursor: pointer;
   align-items: center;
@@ -9,7 +11,7 @@
   justify-content: center;
   padding: 0.24rem 0px;
   transition: all 0.1s ease-in-out;
-  @media (min-width: 978px) {
+  @include header-desktop {
     border-bottom-left-radius: var(--border-radius);
     border-bottom-right-radius: 0px;
     border-right: var(--border-style) var(--border-mid-color);
@@ -25,7 +27,7 @@
   .label {
     display: none;
 
-    @media (min-width: 978px) {
+    @include header-desktop {
       color: var(--font-mid-grey);
       display: inline;
       font-size: 16px;
@@ -38,7 +40,7 @@
 
   svg:first-of-type {
     display: none;
-    @media (min-width: 978px) {
+    @include header-desktop {
       display: inline;
       transition: all 0.1s ease-in-out;
       transform: rotate(0deg);

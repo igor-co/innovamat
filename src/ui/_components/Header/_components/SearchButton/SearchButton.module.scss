@@ -1,3 +1,5 @@
+@import '_styles/mixins';
+
 .button {
   cursor: pointer;
   display: flex;
@@ -20,7 +22,7 @@
     display: none;
   }
 
-  @media (min-width: 978px) {
+  @include header-desktop {
     width: calc(var(--nav-width-desktop) + 1em);
     background-color: var(--button-primary-color);
     border-radius: var(--border-radius);

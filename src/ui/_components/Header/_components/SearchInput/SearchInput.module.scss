@@ -1,3 +1,5 @@
+@import '_styles/mixins';
+
 .input {
   outline: none;
   border: 1px solid var(--white);
@@ -15,7 +17,7 @@
     letter-spacing: 0em;
     color: var(--font-light-grey);
   }
-  @media (min-width: 978px) {
+  @include header-desktop {
     width: calc(
       100% - var(--nav-width-desktop) * 2 - var(--layout-margin-desktop) * 2
     );

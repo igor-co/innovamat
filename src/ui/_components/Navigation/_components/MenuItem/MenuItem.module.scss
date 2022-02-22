@@ -1,3 +1,5 @@
+@import '_styles/mixins';
+
 .menuItem {
   text-decoration: none;
   padding: 1em 1.5em;
@@ -10,7 +12,7 @@
     padding-top: 4px;
   }
 
-  @media (min-width: 768px) {
+  @include navigation-desktop {
     flex-direction: row;
     padding: 1em 0 0 0;
 
