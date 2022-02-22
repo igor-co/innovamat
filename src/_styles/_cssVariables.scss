@@ -1,0 +1,60 @@
+:root {
+  //colors
+  --white: #ffffff;
+  --error-color: #c13d45;
+
+  --corporate-color: #18c6ac;
+  --corporate-mid-color: #129e89;
+  --corporate-mid-dark-color: #298079;
+  --corporate-dark-color: #02524c;
+  --corporate-darkerest-color: #192f2d;
+
+  --bg-color: var(--white);
+  --panel-color: var(--light-grey);
+
+  --lightest-grey: #e6e6e6;
+  --light-grey: #ededed;
+  --mid-grey: #ddeaea;
+  --mid-dark-grey: #c5d6d5;
+  --dark-grey: #99aba9;
+  --darkest-grey: #a3b7b5;
+  --header-borders-dark-grey: #e3e3e3;
+
+  --main-font-color: var(--corporate-darkerest-color);
+  --font-dark-corporate: var(--corporate-dark-color);
+  --font-light-grey: var(--mid-dark-grey);
+  --font-mid-grey: var(--dark-grey);
+  --font-dark-grey: var(--darkest-grey);
+
+  --button-primary-font-color: var(--white);
+  --button-primary-color: var(--corporate-color);
+  --button-primary-hover-color: var(--corporate-mid-color);
+  --button-primary-active-color: var(--corporate-mid-dark-color);
+
+  --button-secondary-disabled-font-color: var(--dark-grey);
+  --button-secondary-color: var(--mid-grey);
+  --button-secondary-hover-color: var(--mid-dark-grey);
+  --button-secondary-active-color: var(--dark-grey);
+  --button-secondary-disabled-color: var(--lightest-grey);
+
+  //borders
+  --border-radius: 8px;
+  --card-border-radius: 5px;
+  --button-border-radius: 5px;
+  --border-style: 1px solid;
+  --border-light-color: var(--lightest-grey);
+  --border-mid-color: var(--light-grey);
+  --border-dark-color: var(--mid-dark-grey);
+
+  //shadows
+  --primary-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
+  --main-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+
+  //sizes
+  --header-height-mobile: 3rem;
+  --header-height-desktop: 4rem;
+  --nav-width-desktop: 16rem;
+  --layout-margin-mobile: 1rem;
+  --layout-margin-desktop: 2rem;
+  --layout-margin-top-desktop: 1.2rem;
+}

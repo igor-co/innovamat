@@ -1,0 +1,37 @@
+@import '_styles/mixins';
+
+.loaderWrapper {
+  display: flex;
+  height: 80vh;
+  width: 100%;
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.noContent {
+  flex-direction: column;
+  margin-top: 3rem;
+  margin-left: 0.75rem;
+  .error {
+    color: var(--error-color);
+  }
+}
+
+.fileWrapper {
+  padding: 1rem 0;
+  height: 100vh;
+  @include navigation-desktop {
+    padding-left: var(--layout-margin-desktop);
+  }
+}
+
+.downloadLink {
+  color: var(--corporate-color);
+  text-decoration: none;
+  font-size: 1.25rem;
+  font-weight: bold;
+  &:hover {
+    text-decoration: underline;
+  }
+}

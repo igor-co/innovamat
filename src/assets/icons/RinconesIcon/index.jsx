@@ -1,0 +1,1 @@
+export { RinconesIcon } from './RinconesIcon';

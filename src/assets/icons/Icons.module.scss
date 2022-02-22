@@ -1,0 +1,47 @@
+.navIconActive {
+  path {
+    stroke: var(--corporate-color);
+  }
+}
+.navIconDisabled {
+  path {
+    stroke: var(--font-dark-grey);
+  }
+}
+.favoriteIconDisabled {
+  path {
+    fill: var(--main-font-color);
+  }
+}
+.favoriteIconActive {
+  path {
+    fill: var(--corporate-color);
+  }
+}
+.opened {
+  transition: all 0.1s ease-in-out;
+  transform: rotate(0deg);
+}
+.closed {
+  transition: all 0.1s ease-in-out;
+  transform: rotate(-180deg);
+}
+
+.spinner {
+  height: 90px;
+  width: 90px;
+  path {
+    fill: var(--corporate-color);
+  }
+
+  animation: spinner 1s infinite ease-in-out;
+
+  @keyframes spinner {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}

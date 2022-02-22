@@ -1,0 +1,34 @@
+@import '_styles/mixins';
+
+.viewTitle {
+  margin: 0 0.75rem;
+  padding-top: 0.7rem;
+}
+
+.sectionTitle {
+  border-bottom: var(--border-style) var(--border-dark-color);
+  padding: 1rem 0 0.4rem 0;
+  margin: 0 0.75rem 0.25rem 0.75rem;
+}
+
+.loaderWrapper {
+  display: flex;
+  height: 80vh;
+  width: 100%;
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.noContent {
+  flex-direction: column;
+  margin-top: 3rem;
+  margin-left: 0.75rem;
+  .error {
+    color: var(--error-color);
+  }
+}
+
+.section {
+  @include responsive-cards-grid;
+}

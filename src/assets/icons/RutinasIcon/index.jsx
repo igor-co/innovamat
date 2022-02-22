@@ -1,0 +1,1 @@
+export { RutinasIcon } from './RutinasIcon';

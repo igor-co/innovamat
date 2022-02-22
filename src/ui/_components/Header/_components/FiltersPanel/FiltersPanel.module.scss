@@ -1,0 +1,51 @@
+@import '_styles/mixins';
+
+.filtersWrapper {
+  position: fixed;
+  background-color: var(--bg-color);
+  border: var(--border-style) var(--header-borders-dark-grey);
+  transition: all 0.1s ease-in-out;
+  border-top: 0px transparent;
+  border-bottom-left-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
+  box-shadow: var(--main-shadow);
+  width: calc(var(--nav-width-desktop) - var(--layout-margin-desktop));
+  right: calc(100vw / 2 - var(--nav-width-desktop) / 2);
+  @include header-desktop {
+    margin-left: var(--layout-margin-desktop);
+    right: auto;
+  }
+
+  .content {
+    padding: 1.2rem 0.8rem 0px 0.8rem;
+  }
+  .title {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 0em;
+    margin: 0px;
+    margin-bottom: 0.6rem;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+.isLastClosed {
+  padding-bottom: 1.8rem;
+}
+.buttonsWrapper_grid_2,
+.buttonsWrapper_grid_6 {
+  margin-bottom: 1.8rem;
+  display: grid;
+  grid-gap: 0.5rem;
+}
+.buttonsWrapper_grid_2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+.buttonsWrapper_grid_6 {
+  grid-template-columns: repeat(6, 1fr);
+}
+
+svg {
+  cursor: pointer;
+}

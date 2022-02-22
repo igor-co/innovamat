@@ -1,0 +1,27 @@
+@import '_styles/mixins';
+
+.layoutWrapper {
+  display: flex;
+  justify-content: center;
+
+  .content {
+    padding-top: calc(
+      var(--header-height-desktop) + var(--layout-margin-mobile)
+    );
+    padding-left: var(--layout-margin-mobile);
+    padding-bottom: var(--header-height-desktop);
+    padding-right: var(--layout-margin-mobile);
+
+    @include navigation-desktop {
+      width: 100%;
+      padding-top: calc(
+        var(--header-height-desktop) + var(--layout-margin-top-desktop)
+      );
+      padding-right: var(--layout-margin-desktop);
+      padding-bottom: var(--header-height-desktop);
+      padding-left: calc(
+        var(--nav-width-desktop) + var(--layout-margin-desktop)
+      );
+    }
+  }
+}

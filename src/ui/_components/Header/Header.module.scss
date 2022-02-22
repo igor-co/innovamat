@@ -1,0 +1,55 @@
+@import '_styles/mixins';
+
+.headerWrapper {
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: var(--header-height-mobile);
+  background-color: var(--panel-color);
+
+  @include header-desktop {
+    height: var(--header-height-desktop);
+    background-color: var(--bg-color);
+  }
+}
+.shadow {
+  box-shadow: var(--main-shadow);
+}
+
+.searchBar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+
+  .filter {
+    order: 3;
+  }
+  .searchInput {
+    order: 1;
+  }
+  .searchButton {
+    order: 2;
+  }
+
+  @include header-desktop {
+    justify-content: flex-start;
+    height: var(--header-height-desktop);
+    background-color: var(--bg-color);
+    .filter {
+      order: 1;
+    }
+    .searchInput {
+      order: 2;
+    }
+    .searchButton {
+      order: 3;
+    }
+  }
+}

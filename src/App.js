@@ -1,47 +1,36 @@
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
+
+import { config } from 'conf';
+
+import { DetailsView } from 'ui/views/DetailsView';
+import { GenericView } from 'ui/views/GenericView';
+import { NotFoundView } from 'ui/views/NotFoundView';
+import { SearchView } from 'ui/views/SearchView';
+
+import { GlobalContextProvider } from 'ui/_functions/Contexts/GlobalContext/GlobalContextProvider';
 
 export const App = () => {
+  const { paths } = config;
+  /**TODO
+    Make Talleres first page + implement 
+   Fix header in mobile
+   Search + results
+   Filters menu panel + filtering
+   *
+   */
+
   return (
-    <Routes>
-      <Route path='/' element={<Home />} />
-      <Route path='talleres' element={<Page type='talleres' />} />
-      <Route path='rincones' element={<Page type='rincones' />} />
-      <Route path='ambientes' element={<Page type='ambientes' />} />
-      <Route path='rutinas' element={<Page type='rutinas' />} />
-    </Routes>
+    <GlobalContextProvider>
+      <Routes>
+        <Route path='/' element={<GenericView />} />
+        <Route path={paths.TALLERES} element={<GenericView />} />
+        <Route path={paths.RINCONES} element={<GenericView />} />
+        <Route path={paths.AMBIENTES} element={<GenericView />} />
+        <Route path={paths.RUTINAS} element={<GenericView />} />
+        <Route path={paths.SEARCH} element={<SearchView />} />
+        <Route path={`${paths.RESOURCES}/:id`} element={<DetailsView />} />
+        <Route path='*' element={<NotFoundView />} />
+      </Routes>
+    </GlobalContextProvider>
   );
 };
-
-const Home = () => {
-  return (
-    <>
-      <main>
-        <h2>Pagina de inicio</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-      </main>
-      <nav style={{ display: 'flex', flexDirection: 'column' }}>
-        <Link to='/talleres'>Talleres</Link>
-        <Link to='/rincones'>Rincones</Link>
-        <Link to='/ambientes'>Ambientes</Link>
-        <Link to='/rutinas'>Rutinas</Link>
-      </nav>
-    </>
-  );
-};
-
-function Page({ type }) {
-  return (
-    <>
-      <main>
-        <h2>{type}</h2>
-        <p>
-          Culpa, quasi. Soluta, porro? Minus perferendis deleniti repellendus id
-          sint
-        </p>
-      </main>
-      <nav>
-        <Link to='/'>Inicio</Link>
-      </nav>
-    </>
-  );
-}
