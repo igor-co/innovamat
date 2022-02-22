@@ -11,13 +11,6 @@ import { GlobalContextProvider } from 'ui/_functions/Contexts/GlobalContext/Glob
 
 export const App = () => {
   const { paths } = config;
-  /**TODO
-    Make Talleres first page + implement 
-   Fix header in mobile
-   Search + results
-   Filters menu panel + filtering
-   *
-   */
 
   return (
     <GlobalContextProvider>

@@ -89,8 +89,6 @@ export const SearchView = () => {
       );
     }
 
-    console.log('content', content);
-
     if (status === 'resolved' && content.length === 0) {
       return (
         <div className={styles.noContent}>
