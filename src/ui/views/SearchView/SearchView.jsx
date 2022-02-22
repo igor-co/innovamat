@@ -14,10 +14,15 @@ import { GlobalContext } from 'ui/_functions/Contexts/GlobalContext/GlobalContex
 import { Api } from 'services/Api';
 
 export const SearchView = () => {
-  const { searchingPhrase, isSearching, currentViewType } =
-    useContext(GlobalContext);
+  const {
+    currentViewType,
+    filterBy,
+    isSearching,
+    searchingPhrase,
+    setFilterBy,
+  } = useContext(GlobalContext);
 
-  const [{ status, error, content }, setState] = useState({
+  const [{ content, error, status }, setState] = useState({
     status: 'idle',
     error: null,
     content: [],
@@ -26,6 +31,10 @@ export const SearchView = () => {
   const [favoritesIds, setFavoritesIds] = useLocalStorage('innovamat_fav', []);
 
   const { messages } = config;
+
+  useEffect(() => {
+    setFilterBy((prev) => ({ ...prev, dinamicas: currentViewType }));
+  }, []);
 
   useEffect(() => {
     onViewLoad();
@@ -58,7 +67,7 @@ export const SearchView = () => {
   };
 
   const filterByCallback = (resource) =>
-    resource.tag.toUpperCase() === currentViewType.toUpperCase();
+    resource.tag.toUpperCase() === filterBy.dinamicas.toUpperCase();
 
   const renderContent = () => {
     if (status === 'pending') {

@@ -10,14 +10,7 @@ import { ChevronMiniIcon } from 'assets/icons/ChevronMiniIcon';
 import { GlobalContext } from 'ui/_functions/Contexts/GlobalContext/GlobalContext';
 
 export const FiltersPanel = () => {
-  const { currentViewType } = useContext(GlobalContext);
-
-  const [filterBy, setFilterBy] = useState({
-    realizable: null,
-    curso: null,
-    dinamicas: currentViewType,
-    bloques: null,
-  });
+  const { filterBy, setFilterBy } = useContext(GlobalContext);
 
   const [isSectionOpened, setIsSectionOpened] = useState({
     realizable: true,
